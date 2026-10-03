@@ -1,0 +1,72 @@
+:root {
+  --bg: #f3f5f8; --card: #fff; --ink: #1c2530; --muted: #6b7785; --line: #dde3ea;
+  --brand: #1f4e79; --brand-2: #2f7fc1; --sky: #dcebf8; --ok: #2e7d4f; --warn: #b7791f; --bad: #c0392b;
+  --radius: 8px; --shadow: 0 1px 2px rgba(20,35,55,.06), 0 4px 12px rgba(20,35,55,.05);
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--ink); font: 15px/1.5 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+.topbar { display: flex; align-items: center; justify-content: space-between; padding: 0 24px; height: 56px; background: var(--brand); color: #fff; }
+.brand { display: flex; align-items: center; gap: 8px; font-weight: 600; font-size: 17px; letter-spacing: .02em; color: #fff; text-decoration: none; }
+.topbar nav a { color: #cfe0f1; text-decoration: none; margin-left: 20px; padding: 18px 0; border-bottom: 2px solid transparent; }
+.topbar nav a:hover, .topbar nav a.active { color: #fff; border-color: #fff; }
+.icon { width: 22px; height: 22px; } .icon.big { width: 48px; height: 48px; color: var(--line); }
+main { max-width: 1040px; margin: 0 auto; padding: 28px 20px 48px; }
+h1 { margin: 0 0 4px; font-size: 24px; } h2 { margin: 0 0 14px; font-size: 13px; text-transform: uppercase; letter-spacing: .08em; color: var(--muted); }
+.muted { color: var(--muted); } .center { text-align: center; } .page-head { margin-bottom: 22px; }
+.grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; align-items: start; }
+.cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px; }
+@media (max-width: 760px) { .grid { grid-template-columns: 1fr; } }
+.card { background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); box-shadow: var(--shadow); padding: 20px; }
+label { display: block; font-size: 13px; font-weight: 600; margin-bottom: 14px; }
+label.check { display: flex; align-items: center; gap: 8px; font-weight: 500; }
+select, input[type=number] { display: block; width: 100%; margin-top: 4px; padding: 8px 10px; font: inherit; border: 1px solid var(--line); border-radius: 6px; background: #fff; color: var(--ink); }
+select:focus, input:focus, .btn:focus-visible { outline: 2px solid var(--brand-2); outline-offset: 1px; }
+.row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.btn { width: 100%; padding: 10px 16px; font: inherit; font-weight: 600; color: #fff; background: var(--brand); border: 0; border-radius: 6px; cursor: pointer; transition: background .15s, transform .1s; }
+.btn:hover { background: #18405f; } .btn:active { transform: translateY(1px); }
+.btn.secondary { background: var(--sky); color: var(--brand); } .btn.secondary:hover { background: #c8def2; }
+.btn:disabled { opacity: .5; cursor: not-allowed; }
+.demo { min-height: 140px; display: flex; align-items: center; justify-content: center; }
+.demo.gap { gap: 10px; } .demo .btn { width: auto; }
+.badge { padding: 3px 10px; border-radius: 999px; font-size: 12px; font-weight: 700; color: #fff; }
+.badge.ok { background: var(--ok); } .badge.warn { background: var(--warn); } .badge.bad { background: var(--bad); }
+
+.result { min-height: 300px; display: flex; flex-direction: column; justify-content: center; }
+.empty { text-align: center; } .error { color: var(--bad); text-align: center; font-weight: 600; }
+.route { display: flex; align-items: center; gap: 12px; justify-content: center; margin-bottom: 4px; }
+.icao { font-size: 26px; font-weight: 700; color: var(--brand); letter-spacing: .04em; }
+.route .line { flex: 0 0 80px; border-top: 2px dashed var(--brand-2); }
+table { width: 100%; border-collapse: collapse; margin: 14px 0; }
+td { padding: 9px 0; border-bottom: 1px solid var(--line); } td.num { text-align: right; font-variant-numeric: tabular-nums; }
+tr.total td { font-weight: 700; font-size: 18px; border-bottom: 0; border-top: 2px solid var(--ink); }
+.result > * { animation: rise .35s ease both; }
+@keyframes rise { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+
+/* Globe loader: planes circling a globe */
+.globe-loader { --size: 110px; position: relative; width: var(--size); height: var(--size); margin: 0 auto 8px; }
+.globe-loader.small { --size: 64px; }
+.globe { position: absolute; inset: 18%; border-radius: 50%;
+  background: radial-gradient(circle at 32% 30%, #7fb8e6, #2f7fc1 55%, #1f4e79);
+  box-shadow: inset -6px -8px 14px rgba(0,0,0,.25); overflow: hidden; }
+.globe::before { content: ""; position: absolute; inset: 0;
+  background: repeating-linear-gradient(90deg, rgba(255,255,255,.28) 0 1px, transparent 1px 14px);
+  animation: spin-globe 6s linear infinite; }
+.globe::after { content: ""; position: absolute; inset: 0;
+  background: repeating-linear-gradient(0deg, rgba(255,255,255,.2) 0 1px, transparent 1px 14px); }
+@keyframes spin-globe { to { background-position: 14px 0; } }
+.orbit { position: absolute; inset: 0; animation: orbit 2.4s linear infinite; }
+.orbit-2 { inset: 8%; animation-duration: 3.6s; animation-direction: reverse; opacity: .55; }
+.orbit .plane { position: absolute; top: -4px; left: 50%; width: 22px; height: 22px; margin-left: -11px; color: var(--brand); transform: rotate(90deg); }
+.orbit-2 .plane { width: 16px; height: 16px; margin-left: -8px; color: var(--brand-2); transform: rotate(90deg); }
+.orbit-2 .plane { transform: rotate(90deg); }
+@keyframes orbit { to { transform: rotate(360deg); } }
+
+/* Runway loader */
+.runway { position: relative; width: 220px; height: 36px; background: #3a4552; border-radius: 4px; overflow: hidden; }
+.runway::before { content: ""; position: absolute; left: 0; right: 0; top: 50%; height: 2px;
+  background: repeating-linear-gradient(90deg, #fff 0 14px, transparent 14px 28px); }
+.runway .plane { position: absolute; top: 6px; left: -24px; width: 24px; height: 24px; color: #fff; transform: rotate(90deg); animation: takeoff 2.2s ease-in infinite; }
+@keyframes takeoff { 0% { left: -24px; transform: rotate(90deg) scale(1); } 100% { left: 220px; transform: rotate(90deg) scale(1.5); opacity: 0; } }
+
+.overlay { position: fixed; inset: 0; z-index: 10; display: flex; flex-direction: column; align-items: center; justify-content: center; background: rgba(243,245,248,.9); animation: rise .2s ease both; }
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; } }

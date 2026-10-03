@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="page-head">
+  <h1>Flight pricing</h1>
+  <p class="muted">Estimate the cost of a General Aviation trip: rental, fuel and landing fees.</p>
+</div>
+<div class="grid">
+  <form id="quote-form" class="card" autocomplete="off">
+    <h2>Trip</h2>
+    <label>Aircraft
+      <select name="aircraft" required>
+        {% for a in aircraft %}<option value="{{ a.id }}" data-seats="{{ a.seats }}">{{ a.name }} · {{ a.type }}</option>{% endfor %}
+      </select>
+    </label>
+    <div class="row">
+      <label>From
+        <select name="origin" required>
+          {% for p in airports %}<option value="{{ p.icao }}" {{ 'selected' if p.icao == 'KSFO' }}>{{ p.icao }} · {{ p.name }}</option>{% endfor %}
+        </select>
+      </label>
+      <label>To
+        <select name="destination" required>
+          {% for p in airports %}<option value="{{ p.icao }}" {{ 'selected' if p.icao == 'KLAS' }}>{{ p.icao }} · {{ p.name }}</option>{% endfor %}
+        </select>
+      </label>
+    </div>
+    <div class="row">
+      <label>Passengers
+        <input type="number" name="pax" min="1" max="6" value="2" required>
+      </label>
+      <label>Headwind (kt)
+        <input type="number" name="headwind" min="-50" max="50" value="0" required>
+      </label>
+    </div>
+    <label class="check"><input type="checkbox" name="round_trip"> Round trip</label>
+    <button type="submit" class="btn">Calculate price</button>
+  </form>
+
+  <section class="card result" id="result" aria-live="polite">
+    <div class="empty">
+      <svg class="icon big" viewBox="0 0 24 24"><use href="#i-plane"/></svg>
+      <p class="muted">Fill in the trip and calculate to see the breakdown.</p>
+    </div>
+  </section>
+</div>
+<template id="loader-tpl">{% include "_globe.html" %}<p class="muted center">Checking winds aloft…</p></template>
+{% endblock %}
+{% block scripts %}<script src="{{ url_for('static', filename='js/pricing.js') }}"></script>{% endblock %}
