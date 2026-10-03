@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block title %}Style playground · HangarRate{% endblock %}
+{% block content %}
+<div class="page-head">
+  <h1>Style playground</h1>
+  <p class="muted">Sandbox for animations and UI components. Add new samples as cards below.</p>
+</div>
+<div class="cards">
+  <section class="card"><h2>Globe orbit</h2><div class="demo">{% include "_globe.html" %}</div></section>
+  <section class="card"><h2>Globe orbit · small</h2><div class="demo">{% with cls="small" %}{% include "_globe.html" %}{% endwith %}</div></section>
+  <section class="card"><h2>Runway</h2>
+    <div class="demo"><div class="runway" role="status" aria-label="Loading"><svg class="plane" viewBox="0 0 24 24"><use href="#i-plane"/></svg></div></div></section>
+  <section class="card"><h2>Buttons</h2>
+    <div class="demo gap"><button class="btn">Primary</button><button class="btn secondary">Secondary</button><button class="btn" disabled>Disabled</button></div></section>
+  <section class="card"><h2>Status badges</h2>
+    <div class="demo gap"><span class="badge ok">VFR</span><span class="badge warn">MVFR</span><span class="badge bad">IFR</span></div></section>
+  <section class="card"><h2>Loader overlay</h2>
+    <div class="demo"><button class="btn secondary" id="demo-overlay">Show for 2s</button></div></section>
+</div>
+<template id="loader-tpl">{% include "_globe.html" %}<p class="muted center">Loading…</p></template>
+{% endblock %}
+{% block scripts %}<script>
+document.getElementById('demo-overlay').addEventListener('click', () => {
+  const o = Loader.overlay(); setTimeout(() => o.remove(), 2000);
+});
+</script>{% endblock %}
