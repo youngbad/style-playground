@@ -3,24 +3,333 @@
 {% block content %}
 <div class="page-head">
   <h1>Style playground</h1>
-  <p class="muted">Sandbox for animations and UI components. Add new samples as cards below.</p>
+  <p class="muted">Sandbox for animations and UI components, grouped by category.</p>
 </div>
+<div class="filters" role="group" aria-label="Categories">
+  <button class="chip active" data-cat="all">All</button>
+  <button class="chip" data-cat="loaders">Loaders</button>
+  <button class="chip" data-cat="buttons">Buttons</button>
+  <button class="chip" data-cat="badges">Badges</button>
+  <button class="chip" data-cat="text">Text</button>
+  <button class="chip" data-cat="cards">Cards &amp; transitions</button>
+  <button class="chip" data-cat="aviation">Aviation</button>
+  <button class="chip" data-cat="flight">Flight scenes</button>
+  <button class="chip" data-cat="weather">Weather</button>
+  <button class="chip" data-cat="ux">UX add-ins</button>
+  <button class="chip" data-cat="grid">Data grid &amp; forms</button>
+  <button class="chip" id="cockpit-toggle" aria-pressed="false">Cockpit theme</button>
+</div>
+
 <div class="cards">
-  <section class="card"><h2>Globe orbit</h2><div class="demo">{% include "_globe.html" %}</div></section>
-  <section class="card"><h2>Globe orbit · small</h2><div class="demo">{% with cls="small" %}{% include "_globe.html" %}{% endwith %}</div></section>
-  <section class="card"><h2>Runway</h2>
+  <!-- Loaders -->
+  <section class="card" data-cat="loaders"><h2>Globe orbit</h2><div class="demo">{% include "_globe.html" %}</div></section>
+  <section class="card" data-cat="loaders"><h2>Globe orbit · small</h2><div class="demo">{% with cls="small" %}{% include "_globe.html" %}{% endwith %}</div></section>
+  <section class="card" data-cat="loaders"><h2>Runway</h2>
     <div class="demo"><div class="runway" role="status" aria-label="Loading"><svg class="plane" viewBox="0 0 24 24"><use href="#i-plane"/></svg></div></div></section>
-  <section class="card"><h2>Buttons</h2>
-    <div class="demo gap"><button class="btn">Primary</button><button class="btn secondary">Secondary</button><button class="btn" disabled>Disabled</button></div></section>
-  <section class="card"><h2>Status badges</h2>
-    <div class="demo gap"><span class="badge ok">VFR</span><span class="badge warn">MVFR</span><span class="badge bad">IFR</span></div></section>
-  <section class="card"><h2>Loader overlay</h2>
+  <section class="card" data-cat="loaders"><h2>Spinner</h2>
+    <div class="demo"><div class="spinner" role="status" aria-label="Loading"></div></div></section>
+  <section class="card" data-cat="loaders"><h2>Bouncing dots</h2>
+    <div class="demo"><div class="dots" role="status" aria-label="Loading"><i></i><i></i><i></i></div></div></section>
+  <section class="card" data-cat="loaders"><h2>Progress bar</h2>
+    <div class="demo"><div class="bar" role="status" aria-label="Loading"></div></div></section>
+  <section class="card" data-cat="loaders"><h2>Equalizer</h2>
+    <div class="demo"><div class="eq" role="status" aria-label="Loading"><i></i><i></i><i></i><i></i><i></i></div></div></section>
+  <section class="card" data-cat="loaders"><h2>Skeleton</h2>
+    <div class="demo"><div class="skeleton"><span></span><span></span><span class="short"></span></div></div></section>
+  <section class="card" data-cat="loaders"><h2>Loader overlay</h2>
     <div class="demo"><button class="btn secondary" id="demo-overlay">Show for 2s</button></div></section>
+
+  <!-- Buttons -->
+  <section class="card" data-cat="buttons"><h2>Buttons</h2>
+    <div class="demo gap"><button class="btn">Primary</button><button class="btn secondary">Secondary</button><button class="btn" disabled>Disabled</button></div></section>
+  <section class="card" data-cat="buttons"><h2>Pulse</h2>
+    <div class="demo"><button class="btn fx-pulse">Book flight</button></div></section>
+  <section class="card" data-cat="buttons"><h2>Shine sweep</h2>
+    <div class="demo"><button class="btn fx-shine">Get quote</button></div></section>
+  <section class="card" data-cat="buttons"><h2>Lift &amp; glow</h2>
+    <div class="demo"><button class="btn fx-lift">Hover me</button></div></section>
+  <section class="card" data-cat="buttons"><h2>Outline fill</h2>
+    <div class="demo"><button class="btn fx-fill">Hover me</button></div></section>
+  <section class="card" data-cat="buttons"><h2>Ripple</h2>
+    <div class="demo"><button class="btn fx-ripple" id="demo-ripple">Click me</button></div></section>
+
+  <!-- Badges -->
+  <section class="card" data-cat="badges"><h2>Status badges</h2>
+    <div class="demo gap"><span class="badge ok">VFR</span><span class="badge warn">MVFR</span><span class="badge bad">IFR</span></div></section>
+  <section class="card" data-cat="badges"><h2>Live indicator</h2>
+    <div class="demo gap"><span class="badge ok live">Live</span><span class="badge bad live">Alert</span></div></section>
+  <section class="card" data-cat="badges"><h2>Blink</h2>
+    <div class="demo gap"><span class="badge warn blink">Delayed</span></div></section>
+  <section class="card" data-cat="badges"><h2>Wobble</h2>
+    <div class="demo gap"><span class="badge bad wobble">NOTAM</span></div></section>
+
+  <!-- Text -->
+  <section class="card" data-cat="text"><h2>Gradient shimmer</h2>
+    <div class="demo"><span class="t-shimmer">HangarRate</span></div></section>
+  <section class="card" data-cat="text"><h2>Typewriter</h2>
+    <div class="demo"><span class="t-type">Cleared for takeoff</span></div></section>
+  <section class="card" data-cat="text"><h2>Fade words</h2>
+    <div class="demo"><span class="t-words"><b>Fly</b> <b>smarter</b> <b>today</b></span></div></section>
+  <section class="card" data-cat="text"><h2>Underline grow</h2>
+    <div class="demo"><a href="#" class="t-underline">Hover this link</a></div></section>
+  <section class="card" data-cat="text"><h2>Counter</h2>
+    <div class="demo"><span class="t-count" id="demo-count">0</span></div></section>
+
+  <!-- Cards & transitions -->
+  <section class="card" data-cat="cards"><h2>Tilt on hover</h2>
+    <div class="demo"><div class="tile fx-tilt">Hover</div></div></section>
+  <section class="card" data-cat="cards"><h2>Flip card</h2>
+    <div class="demo"><div class="flip"><div class="flip-in"><div class="face">Front</div><div class="face back">Back</div></div></div></div></section>
+  <section class="card" data-cat="cards"><h2>Float</h2>
+    <div class="demo"><div class="tile fx-float">Floating</div></div></section>
+  <section class="card" data-cat="cards"><h2>Staggered list</h2>
+    <div class="demo"><ul class="stagger"><li>Preflight</li><li>Taxi</li><li>Takeoff</li><li>Cruise</li></ul></div></section>
+  <section class="card" data-cat="cards"><h2>Accordion</h2>
+    <div class="demo"><details class="acc"><summary>Weight &amp; balance</summary><p>Smooth-expanding content area.</p></details></div></section>
+  <section class="card" data-cat="cards"><h2>Replay entrance</h2>
+    <div class="demo col"><div class="tile" id="demo-enter">Hello</div><button class="btn secondary" id="demo-replay">Replay</button></div></section>
+
+  <!-- Aviation -->
+  <section class="card" data-cat="aviation"><h2>Radar sweep</h2>
+    <div class="demo"><div class="radar" role="img" aria-label="Radar"><i></i></div></div></section>
+  <section class="card" data-cat="aviation"><h2>Clouds</h2>
+    <div class="demo"><div class="sky"><span class="cloud c1"></span><span class="cloud c2"></span><svg class="plane" viewBox="0 0 24 24"><use href="#i-plane"/></svg></div></div></section>
+  <section class="card" data-cat="aviation"><h2>Flight path</h2>
+    <div class="demo"><svg class="path" viewBox="0 0 200 80"><path d="M10 65 Q100 -20 190 65"/><circle cx="10" cy="65" r="4"/><circle cx="190" cy="65" r="4"/></svg></div></section>
+  <section class="card" data-cat="aviation"><h2>Altimeter</h2>
+    <div class="demo"><div class="dial"><i></i></div></div></section>
+
+  <!-- Flight scenes -->
+  <section class="card" data-cat="flight"><h2>Takeoff</h2>
+    <div class="demo"><div class="scene"><div class="strip"></div><svg class="plane tol-off" viewBox="0 0 24 24"><use href="#i-plane"/></svg></div></div></section>
+  <section class="card" data-cat="loaders"><h2>Landing · cockpit view</h2>
+    <div class="demo"><div class="land" role="status" aria-label="Landing"><div class="land-roll"><div class="land-cam"><div class="land-bg"></div><div class="rwy-w"><div class="rwy"></div></div></div></div><div class="hud"></div><div class="papi"><i></i><i></i><i></i><i></i></div><div class="land-fade"></div></div></div></section>
+  <section class="card" data-cat="loaders"><h2>Around the Earth</h2>
+    <div class="demo"><div class="earth3d" role="status" aria-label="Loading"><div class="tilt"><span class="ring"></span><div class="earth"></div><span class="ring front"></span><div class="orb-x"><div class="orb-y"><div class="orb-d"><div class="orb-h"><i class="ct"></i><svg class="plane" viewBox="0 0 24 24"><use href="#i-plane"/></svg></div></div></div></div></div></div></div></section>
+  <section class="card" data-cat="flight"><h2>Route arc</h2>
+    <div class="demo"><div class="arc"><svg viewBox="0 0 200 80"><path class="arc-line" d="M10 65 Q100 -20 190 65"/><circle cx="10" cy="65" r="4"/><circle cx="190" cy="65" r="4"/></svg><svg class="plane arc-plane" viewBox="0 0 24 24"><use href="#i-plane"/></svg></div></div></section>
+  <section class="card" data-cat="flight"><h2>Artificial horizon</h2>
+    <div class="demo"><div class="ah"><div class="ah-ball"></div><div class="ah-mark"></div></div></div></section>
+  <section class="card" data-cat="flight"><h2>Gauges</h2>
+    <div class="demo gap"><div class="dial gauge" style="--v:70deg"><i></i></div><div class="dial gauge" style="--v:-40deg;--d:3s"><i></i></div></div></section>
+  <section class="card" data-cat="flight"><h2>Warning lights</h2>
+    <div class="demo gap"><span class="lamp g"></span><span class="lamp a"></span><span class="lamp r"></span></div></section>
+  <section class="card" data-cat="flight"><h2>Contrail</h2>
+    <div class="demo"><div class="sky ct"><div class="ct-fly"><span class="trail"></span><svg class="plane" viewBox="0 0 24 24"><use href="#i-plane"/></svg></div></div></div></section>
+  <section class="card" data-cat="flight"><h2>Turbulence</h2>
+    <div class="demo"><div class="tile shake">Bumpy</div></div></section>
+  <section class="card" data-cat="flight"><h2>Day / night</h2>
+    <div class="demo"><div class="daynight"><div class="arm"><span class="sun"></span></div><div class="ground"></div></div></div></section>
+
+  <!-- Weather -->
+  <section class="card" data-cat="weather"><h2>Rain</h2>
+    <div class="demo"><div class="wx rain"><span class="cloud c1"></span></div></div></section>
+  <section class="card" data-cat="weather"><h2>VFR / IFR</h2>
+    <div class="demo col"><div class="wx" id="wx"><span class="cloud c1"></span><span class="fog"></span></div><button class="btn secondary" id="wx-toggle">VFR</button></div></section>
+  <section class="card" data-cat="weather"><h2>Snow</h2>
+    <div class="demo"><div class="wx snow"></div></div></section>
+  <section class="card" data-cat="weather"><h2>Wind arrow</h2>
+    <div class="demo"><svg class="windsock" viewBox="0 0 24 24"><use href="#i-plane"/></svg></div></section>
+
+  <!-- UX add-ins -->
+  <section class="card" data-cat="ux"><h2>Boarding pass quote</h2>
+    <div class="demo col"><div class="pass"><div class="pass-row"><b>KSFO</b><span>&rarr;</span><b>KLAX</b></div><div class="pass-row small"><span>Cessna 172</span><span>2 pax</span></div><div class="pass-total">$<span id="pass-total">0</span></div><div class="barcode"></div></div><button class="btn secondary" id="pass-replay">Recalculate</button></div></section>
+  <section class="card" data-cat="ux"><h2>Airport search + globe <kbd>/</kbd></h2>
+    <div class="demo col"><div class="mini" id="mini"><i></i></div><input id="ap-search" list="ap-list" placeholder="ICAO e.g. KDEN" autocomplete="off"><datalist id="ap-list"><option value="KSFO"><option value="KLAX"><option value="KDEN"><option value="KTEB"><option value="KBOS"></datalist></div></section>
+  <section class="card" data-cat="ux"><h2>Live headwind</h2>
+    <div class="demo col"><svg class="wind-arrow" id="wind-arrow" viewBox="0 0 24 24"><use href="#i-plane"/></svg><input type="range" id="wind" min="-30" max="30" value="0" aria-label="Headwind"><p class="muted center" id="wind-out"></p></div></section>
+  <section class="card" data-cat="ux"><h2>Cost breakdown</h2>
+    <div class="demo col"><div class="split"><span style="--w:55" class="s1" title="Rental $330"></span><span style="--w:30" class="s2" title="Fuel $180"></span><span style="--w:15" class="s3" title="Landing $90"></span></div><div class="legend"><span class="s1">Rental</span><span class="s2">Fuel</span><span class="s3">Fees</span></div></div></section>
+  <section class="card" data-cat="ux"><h2>Aircraft comparison</h2>
+    <div class="demo"><div class="cmp"><div><span>C172</span><i style="--w:40"></i></div><div><span>SR22</span><i style="--w:61"></i></div><div><span>TBM</span><i style="--w:100"></i></div></div></div></section>
+  <section class="card" data-cat="ux"><h2>Toast</h2>
+    <div class="demo"><button class="btn secondary" id="toast-btn">Save quote</button></div></section>
+  <section class="card" data-cat="ux"><h2>Saved routes</h2>
+    <div class="demo gap wrap"><button class="chip route-chip">KSFO&rarr;KLAX</button><button class="chip route-chip">KPAO&rarr;KLAS</button><button class="chip route-chip">KSEA&rarr;KBFI</button></div></section>
+  <section class="card" data-cat="ux"><h2>Unit switch</h2>
+    <div class="demo col"><div class="seg" id="seg"><span class="thumb"></span><button class="on" data-u="kt">kt</button><button data-u="kmh">km/h</button></div><p class="t-count" id="seg-out">122 kt</p></div></section>
+
+  <!-- Data grid & forms -->
+  <section class="card" data-cat="grid"><h2>Form · required &amp; price markers</h2>
+    <p class="fm-legend"><span><i class="req">*</i> Required</span><span><i class="px">$</i> Affects final price</span><span><i class="px pp">÷</i> Affects price per passenger</span></p>
+    <form id="fm" novalidate>
+      <label>Aircraft <i class="req" title="Required">*</i><i class="px" title="Affects final price">$</i><select name="aircraft" required data-px></select></label>
+      <div class="row">
+        <label>From <i class="req" title="Required">*</i><i class="px" title="Affects final price">$</i><select name="origin" required data-px></select></label>
+        <label>To <i class="req" title="Required">*</i><i class="px" title="Affects final price">$</i><select name="destination" required data-px></select></label>
+      </div>
+      <div class="row">
+        <label>Passengers <i class="req" title="Required">*</i><i class="px pp" title="Affects price per passenger">÷</i><input type="number" name="pax" min="1" value="1" required data-px></label>
+        <label>Headwind (kt) <i class="px" title="Affects final price">$</i><input type="number" name="headwind" value="0" data-px></label>
+      </div>
+      <label class="check"><input type="checkbox" name="round_trip" data-px> Round trip <i class="px" title="Affects final price">$</i></label>
+      <label>Contact name <i class="req" title="Required">*</i><input type="text" id="fname" required placeholder="Doesn't change the price"></label>
+      <label>Notes<input type="text" placeholder="Optional"></label>
+      <div class="price-pill" id="fm-pill"><span>Estimated total</span><b id="fm-total">—</b></div>
+    </form></section>
+  <section class="card wide" data-cat="grid"><h2>AG Grid · quote lines</h2>
+    <p class="fm-legend"><span><i class="req">*</i> Required (empty cells are outlined)</span><span><i class="px">$</i> Tinted columns change the price</span><span><i class="px pp">÷</i> Per-passenger price</span></p>
+    <div class="grid-bar"><button class="btn secondary" id="grid-add">Add line</button><button class="btn secondary" id="grid-del">Remove selected</button><span class="price-pill" id="grid-pill"><span>Total</span><b id="grid-sum">$0</b></span></div>
+    <div id="grid" class="ag-theme-quartz"></div></section>
 </div>
 <template id="loader-tpl">{% include "_globe.html" %}<p class="muted center">Loading…</p></template>
 {% endblock %}
-{% block scripts %}<script>
+{% block scripts %}<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/ag-grid-community@32.3.3/styles/ag-grid.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/ag-grid-community@32.3.3/styles/ag-theme-quartz.css">
+<script src="https://cdn.jsdelivr.net/npm/ag-grid-community@32.3.3/dist/ag-grid-community.min.js"></script>
+<script>
 document.getElementById('demo-overlay').addEventListener('click', () => {
   const o = Loader.overlay(); setTimeout(() => o.remove(), 2000);
+});
+
+document.querySelectorAll('.chip').forEach(chip => chip.addEventListener('click', () => {
+  document.querySelectorAll('.chip').forEach(c => c.classList.toggle('active', c === chip));
+  document.querySelectorAll('.cards .card').forEach(card => {
+    card.hidden = chip.dataset.cat !== 'all' && card.dataset.cat !== chip.dataset.cat;
+  });
+}));
+
+document.getElementById('demo-ripple').addEventListener('click', e => {
+  const b = e.currentTarget, r = b.getBoundingClientRect(), s = document.createElement('span');
+  s.className = 'rip'; s.style.left = e.clientX - r.left + 'px'; s.style.top = e.clientY - r.top + 'px';
+  b.appendChild(s); s.addEventListener('animationend', () => s.remove());
+});
+
+const enter = document.getElementById('demo-enter');
+document.getElementById('demo-replay').addEventListener('click', () => {
+  enter.classList.remove('enter'); void enter.offsetWidth; enter.classList.add('enter');
+});
+enter.classList.add('enter');
+
+(function count() {
+  const el = document.getElementById('demo-count'); let n = 0;
+  const step = () => {
+    n += 7; el.textContent = Math.min(n, 1450).toLocaleString('en-US');
+    if (n < 1450) requestAnimationFrame(step); else setTimeout(() => { n = 0; step(); }, 1500);
+  };
+  step();
+})();
+
+const $ = id => document.getElementById(id);
+
+$('cockpit-toggle').addEventListener('click', e => {
+  const on = document.body.classList.toggle('cockpit');
+  e.currentTarget.setAttribute('aria-pressed', on);
+  $('grid').className = on ? 'ag-theme-quartz-dark' : 'ag-theme-quartz';
+});
+
+$('wx-toggle').addEventListener('click', e => {
+  const ifr = $('wx').classList.toggle('ifr');
+  e.currentTarget.textContent = ifr ? 'IFR' : 'VFR';
+});
+
+function passCount() {
+  const el = $('pass-total'), to = 745, t0 = performance.now();
+  const tick = t => { const p = Math.min((t - t0) / 1000, 1); el.textContent = Math.round(to * (1 - Math.pow(1 - p, 3))); if (p < 1) requestAnimationFrame(tick); };
+  requestAnimationFrame(tick);
+}
+$('pass-replay').addEventListener('click', passCount); passCount();
+
+const LON = { KSFO: -122, KLAX: -118, KDEN: -104, KTEB: -74, KBOS: -71 };
+$('ap-search').addEventListener('input', e => {
+  const lon = LON[e.target.value.toUpperCase()];
+  if (lon !== undefined) $('mini').style.setProperty('--lon', (lon * -1.2) + 'px');
+});
+document.addEventListener('keydown', e => {
+  if (e.key === '/' && !/INPUT|TEXTAREA|SELECT/.test(document.activeElement.tagName)) { e.preventDefault(); $('ap-search').focus(); }
+});
+
+function windUpdate() {
+  const w = +$('wind').value, speed = 122 - w, h = 400 / speed, cost = Math.round(h * 165);
+  $('wind-arrow').style.transform = `rotate(${w >= 0 ? -90 : 90}deg) scale(${1 + Math.abs(w) / 30})`;
+  $('wind-out').textContent = `${w >= 0 ? 'Headwind' : 'Tailwind'} ${Math.abs(w)} kt · ${h.toFixed(1)} h · $${cost}`;
+}
+$('wind').addEventListener('input', windUpdate); windUpdate();
+
+$('toast-btn').addEventListener('click', () => {
+  const t = document.createElement('div');
+  t.className = 'toast'; t.setAttribute('role', 'status');
+  t.innerHTML = '<svg class="icon" viewBox="0 0 24 24"><use href="#i-plane"/></svg> Quote saved';
+  document.body.appendChild(t); setTimeout(() => t.remove(), 2600);
+});
+
+document.querySelectorAll('.route-chip').forEach(c => c.addEventListener('click', () => c.classList.toggle('active')));
+
+$('seg').addEventListener('click', e => {
+  const b = e.target.closest('button'); if (!b) return;
+  const kmh = b.dataset.u === 'kmh';
+  $('seg').classList.toggle('right', kmh);
+  $('seg').querySelectorAll('button').forEach(x => x.classList.toggle('on', x === b));
+  $('seg-out').textContent = kmh ? Math.round(122 * 1.852) + ' km/h' : '122 kt';
+});
+
+async function quoteApi(body) {
+  const r = await fetch('/api/quote', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body) });
+  return { ok: r.ok, data: await r.json() };
+}
+const money = n => '$' + Math.round(n).toLocaleString('en-US');
+const bump = el => { el.classList.remove('bump'); void el.offsetWidth; el.classList.add('bump'); };
+
+fetch('/api/catalog').then(r => r.json()).then(cat => {
+  const ids = cat.aircraft.map(a => a.id), icaos = cat.airports.map(a => a.icao);
+
+  const f = $('fm');
+  const fill = (sel, vals) => { sel.innerHTML = '<option value="">Select…</option>' + vals.map(v => `<option value="${v[0]}">${v[1]}</option>`).join(''); };
+  fill(f.elements.aircraft, cat.aircraft.map(a => [a.id, a.name]));
+  fill(f.elements.origin, cat.airports.map(a => [a.icao, `${a.icao} · ${a.name}`]));
+  fill(f.elements.destination, cat.airports.map(a => [a.icao, `${a.icao} · ${a.name}`]));
+  const formQuote = async () => {
+    const e = f.elements, total = $('fm-total');
+    if (!e.aircraft.value || !e.origin.value || !e.destination.value || !e.pax.value) { total.textContent = '—'; $('fm-pill').classList.remove('err'); return; }
+    const { ok, data } = await quoteApi({ aircraft: e.aircraft.value, origin: e.origin.value, destination: e.destination.value,
+      pax: +e.pax.value, headwind: +e.headwind.value || 0, round_trip: e.round_trip.checked });
+    $('fm-pill').classList.toggle('err', !ok);
+    total.textContent = ok ? `${money(data.total)} · ${money(data.per_pax)} / pax` : data.error;
+  };
+  f.addEventListener('input', e => { if (e.target.dataset.px !== undefined) { bump($('fm-pill')); formQuote(); } });
+  f.addEventListener('focusout', e => e.target.classList.add('touched'));
+  formQuote();
+
+  const empty = p => p.value === undefined || p.value === null || p.value === '';
+  const mark = (flags, extra) => ({ headerClass: flags, headerTooltip: extra, cellClass: flags.includes('h-px') || flags.includes('h-pp') ? 'c-px' : undefined });
+  const rows = [
+    { aircraft: 'c172', origin: 'KSFO', destination: 'KLAX', pax: 2, headwind: 0, round_trip: false, note: 'Weekend trip' },
+    { aircraft: 'sr22', origin: 'KPAO', destination: 'KLAS', pax: 3, headwind: 12, round_trip: true, note: '' },
+    { aircraft: 'tbm9', origin: 'KDEN', destination: '', pax: 4, headwind: 0, round_trip: false, note: '' },
+  ];
+  const cols = [
+    { field: 'aircraft', headerName: 'Aircraft', editable: true, cellEditor: 'agSelectCellEditor', cellEditorParams: { values: ['', ...ids] }, cellClassRules: { 'c-missing': empty }, ...mark(['h-req', 'h-px'], 'Required · affects price') },
+    { field: 'origin', headerName: 'From', editable: true, cellEditor: 'agSelectCellEditor', cellEditorParams: { values: ['', ...icaos] }, cellClassRules: { 'c-missing': empty }, ...mark(['h-req', 'h-px'], 'Required · affects price') },
+    { field: 'destination', headerName: 'To', editable: true, cellEditor: 'agSelectCellEditor', cellEditorParams: { values: ['', ...icaos] }, cellClassRules: { 'c-missing': empty }, ...mark(['h-req', 'h-px'], 'Required · affects price') },
+    { field: 'pax', headerName: 'Pax', editable: true, valueParser: p => Number(p.newValue), cellClassRules: { 'c-missing': p => !(p.value >= 1) }, ...mark(['h-req', 'h-pp'], 'Required · affects price per passenger') },
+    { field: 'headwind', headerName: 'Headwind', editable: true, valueParser: p => Number(p.newValue) || 0, ...mark(['h-px'], 'Optional · affects price') },
+    { field: 'round_trip', headerName: 'Round trip', editable: true, cellRenderer: 'agCheckboxCellRenderer', cellEditor: 'agCheckboxCellEditor', ...mark(['h-px'], 'Optional · affects price') },
+    { field: 'note', headerName: 'Note', editable: true, minWidth: 140, headerTooltip: 'Optional' },
+    { field: 'total', headerName: 'Total', editable: false, valueFormatter: p => p.data.err ? 'n/a' : p.value == null ? '—' : money(p.value),
+      tooltipValueGetter: p => p.data.err || '', cellClassRules: { 'c-err': p => !!p.data.err }, cellStyle: { fontWeight: 700 } },
+  ];
+
+  const sum = () => { let s = 0; api.forEachNode(n => { if (n.data.total) s += n.data.total; }); $('grid-sum').textContent = money(s); bump($('grid-pill')); };
+  async function calc(node) {
+    const d = node.data;
+    if (!d.aircraft || !d.origin || !d.destination || !(d.pax >= 1)) { d.total = null; d.err = 'Fill the required fields'; }
+    else {
+      const { ok, data } = await quoteApi({ aircraft: d.aircraft, origin: d.origin, destination: d.destination, pax: d.pax, headwind: d.headwind || 0, round_trip: !!d.round_trip });
+      d.total = ok ? data.total : null; d.err = ok ? '' : data.error;
+    }
+    api.refreshCells({ rowNodes: [node], force: true });
+  }
+  const api = agGrid.createGrid($('grid'), {
+    columnDefs: cols, rowData: rows, rowSelection: 'single', domLayout: 'autoHeight', singleClickEdit: true,
+    stopEditingWhenCellsLoseFocus: true, tooltipShowDelay: 300, animateRows: true,
+    defaultColDef: { flex: 1, minWidth: 125, resizable: true },
+    onCellValueChanged: async e => { await calc(e.node); sum(); },
+  });
+  Promise.all(rows.map((_, i) => calc(api.getDisplayedRowAtIndex(i)))).then(sum);
+  $('grid-add').addEventListener('click', () => {
+    const [n] = api.applyTransaction({ add: [{ aircraft: '', origin: '', destination: '', pax: 1, headwind: 0, round_trip: false, note: '' }] }).add;
+    calc(n).then(sum);
+  });
+  $('grid-del').addEventListener('click', () => { api.applyTransaction({ remove: api.getSelectedRows() }); sum(); });
 });
 </script>{% endblock %}
