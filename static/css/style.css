@@ -278,27 +278,26 @@ input[type=range] { width: 200px; accent-color: var(--brand); }
 /* Around the Earth: tilted sphere, elliptical orbit with depth (plane passes behind the planet) */
 .earth3d { position: relative; width: 240px; height: 170px; }
 .tilt { position: absolute; inset: 0; transform: rotate(-16deg); }
-.ring { position: absolute; left: 50%; top: 50%; width: 200px; height: 60px; margin: -30px 0 0 -100px; border: 1px dashed rgba(47,127,193,.55); border-radius: 50%; z-index: 0; }
+.ring { position: absolute; left: 50%; top: 50%; width: 200px; height: 60px; margin: -30px 0 0 -100px; border: 1px dashed rgba(47,127,193,.4); border-radius: 50%; z-index: 0; }
 .ring.front { z-index: 2; clip-path: inset(50% 0 0 0); }
-.earth { position: absolute; z-index: 1; left: 50%; top: 50%; width: 116px; height: 116px; margin: -58px 0 0 -58px; border-radius: 50%; overflow: hidden;
-  background:
-    radial-gradient(ellipse 30px 22px at 36px 40%, #4fa36a 96%, transparent 100%) 0 0 / 200px 100%,
-    radial-gradient(ellipse 24px 28px at 120px 62%, #4fa36a 96%, transparent 100%) 0 0 / 200px 100%,
-    #2f7fc1;
-  box-shadow: 0 6px 18px rgba(31,78,121,.35); animation: earth-spin 30s linear infinite; }
-.earth::after { content: ""; position: absolute; inset: 0; border-radius: 50%; background: radial-gradient(circle at 32% 28%, rgba(255,255,255,.35), transparent 45%), radial-gradient(circle at 70% 75%, rgba(10,40,90,.4), transparent 65%); }
-@keyframes earth-spin { to { background-position-x: -200px; } }
-.orb-x { position: absolute; left: 50%; top: 50%; width: 0; height: 0; animation: orb-x 3s cubic-bezier(.37,0,.63,1) infinite alternate, orb-z 6s linear infinite; }
-.orb-y { animation: orb-y 3s cubic-bezier(.37,0,.63,1) -1.5s infinite alternate; }
-.orb-d { animation: orb-d 3s cubic-bezier(.37,0,.63,1) -1.5s infinite alternate; }
-.orb-h { animation: orb-head 6s linear infinite; }
-.earth3d .plane { position: absolute; left: -13px; top: -13px; width: 26px; height: 26px; color: #fff; filter: drop-shadow(0 0 1px #1f4e79) drop-shadow(0 0 1px #1f4e79) drop-shadow(0 2px 3px rgba(20,35,55,.35)); animation: none; }
-.orb-h .ct { position: absolute; left: -1.5px; top: 4px; width: 3px; height: 30px; border-radius: 2px; background: linear-gradient(rgba(127,184,230,.9), transparent); }
-@keyframes orb-x { from { transform: translateX(-100px); } to { transform: translateX(100px); } }
-@keyframes orb-y { from { transform: translateY(-30px); } to { transform: translateY(30px); } }
-@keyframes orb-d { from { transform: scale(.75); filter: brightness(.6); } to { transform: scale(1.2); filter: none; } }
-@keyframes orb-z { 0%, 49.9% { z-index: 3; } 50%, 100% { z-index: 0; } }
-@keyframes orb-head { 0% { transform: rotate(180deg); } 5.6% { transform: rotate(127deg); } 12.5% { transform: rotate(105deg); } 25% { transform: rotate(90deg); } 37.5% { transform: rotate(75deg); } 44.4% { transform: rotate(53deg); } 50% { transform: rotate(0); } 55.6% { transform: rotate(-53deg); } 62.5% { transform: rotate(-75deg); } 75% { transform: rotate(-90deg); } 87.5% { transform: rotate(-105deg); } 94.4% { transform: rotate(-127deg); } 100% { transform: rotate(-180deg); } }
+.earth { position: absolute; z-index: 1; left: 50%; top: 50%; width: 120px; height: 120px; margin: -60px 0 0 -60px; overflow: visible; filter: drop-shadow(0 5px 10px rgba(18,49,76,.22)); }
+.world-map { fill: #5eaa72; stroke: #347b54; stroke-width: .8; animation: world-spin 34s linear infinite; }
+.world-map .map-repeat { opacity: .9; transform: translateX(-180px); }
+.latitude { fill: none; stroke: rgba(205,238,255,.2); stroke-width: .7; }
+.cloud-bands { fill: rgba(240,249,255,.13); stroke: none; animation: cloud-drift 24s linear infinite; }
+@keyframes world-spin { to { transform: translateX(-180px); } }
+@keyframes cloud-drift { to { transform: translateX(-180px); } }
+.earth-flight { position: absolute; inset: 0; z-index: 3; width: 100%; height: 100%; overflow: visible; pointer-events: none; }
+.orbit-front { fill: none; stroke: rgba(47,127,193,.44); stroke-width: 1.4; stroke-dasharray: 3 4; }
+.orbit-plane { position: absolute; left: calc(50% - 14px); top: calc(50% - 14px); width: 28px; height: 28px; overflow: visible; filter: drop-shadow(0 1px 2px rgba(10,35,60,.4)); }
+.craft-wing, .craft-tail { fill: #f8fbfd; stroke: #164d72; stroke-width: .65; stroke-linejoin: round; }
+.craft-body { fill: #fff; stroke: #164d72; stroke-width: .8; stroke-linejoin: round; }
+.craft-engine { fill: #a7bac5; stroke: #164d72; stroke-width: .55; }
+.craft-wing { d: path("M 20 20 L 18 6 Q 18 3 20 6 L 28 20 L 37 22 L 37 26 L 28 28 L 20 42 Q 18 45 18 42 L 20 28 L 13 26 L 8 30 Q 6 31 6 28 L 6 25 Q 6 23 8 24 L 13 22 Z"); }
+.craft-tail, .craft-engine { display: none; }
+.ct { opacity: .85; }
+@keyframes plane-orbit { to { offset-distance: 100%; } }
+@keyframes plane-depth { 0%, 49.9% { z-index: 0; } 50%, 100% { z-index: 3; } }
 
 /* Required / price-impact markers, forms and AG Grid */
 .card.wide { grid-column: 1 / -1; }
@@ -320,3 +319,22 @@ input[type=range] { width: 200px; accent-color: var(--brand); }
 .ag-theme-quartz .c-px, .ag-theme-quartz-dark .c-px { background: rgba(47,127,193,.09); }
 .ag-theme-quartz .c-missing, .ag-theme-quartz-dark .c-missing { box-shadow: inset 0 0 0 2px var(--bad); background: rgba(192,57,43,.1); }
 .ag-theme-quartz .c-err, .ag-theme-quartz-dark .c-err { color: var(--bad); }
+
+.tech-note { margin: -8px 0 12px; color: var(--muted); font-size: 12px; }
+.gsap-stage { position: relative; width: min(100%, 280px); aspect-ratio: 260 / 170; }
+.gsap-stage svg { display: block; width: 100%; height: 100%; overflow: visible; }
+.gsap-orbit { fill: none; stroke: rgba(47,127,193,.42); stroke-width: 1.2; stroke-dasharray: 3 4; }
+#gsap-route { visibility: hidden; }
+.gsap-land { fill: #5eaa72; stroke: rgba(231,246,223,.34); stroke-width: 1.2; }
+#gsap-plane { filter: drop-shadow(0 1px 1px rgba(10,35,60,.35)); }
+.gsap-stage.unavailable::after { content: "GSAP CDN unavailable"; position: absolute; inset: 0; display: grid; place-items: center; color: var(--muted); font-size: 12px; background: rgba(243,245,248,.75); }
+.gl-wrap { flex-direction: column; gap: 6px; min-height: 0; }
+.gl-stage { position: relative; width: min(100%, 300px); height: 190px; overflow: hidden; border-radius: 10px; display: grid; place-items: center; color: rgba(49,91,112,.6); font-size: 12px; }
+.gl-stage canvas { display: block; width: 100%; height: 100%; }
+.sky-day { background: linear-gradient(#a9e0fa, #e7f8ff); }
+.sky-dawn { background: linear-gradient(#cfd9ff, #ffe3ec 70%, #fff3dc); }
+.sky-mint { background: linear-gradient(#b8ecdf, #e9fbf4); }
+.sky-dusk { background: linear-gradient(#c6b8f0, #ffd5e5 75%, #ffeccf); }
+.gl-caption { margin: 0; min-height: 16px; color: var(--muted); font-size: 11px; letter-spacing: .02em; transition: opacity .3s; }
+.gl-caption.swap { opacity: 0; }
+

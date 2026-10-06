@@ -17,8 +17,20 @@
   <button class="chip" data-cat="weather">Weather</button>
   <button class="chip" data-cat="ux">UX add-ins</button>
   <button class="chip" data-cat="grid">Data grid &amp; forms</button>
+  <button class="chip" data-cat="lab">3D lab</button>
   <button class="chip" id="cockpit-toggle" aria-pressed="false">Cockpit theme</button>
 </div>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+  <g id="toy-plane" stroke="#3a6178" stroke-width="1.2" stroke-linejoin="round">
+    <path fill="#ff8f70" d="M-12 0 L-17 -9 Q-18 -11 -15 -10 L-9 -6 Z M-12 0 L-17 9 Q-18 11 -15 10 L-9 6 Z"/>
+    <path fill="#ff8f70" d="M-3 -4 L-8 -18 Q-9 -21 -5 -20 L3 -19 Q6 -18 6 -14 L5 -4 Z M-3 4 L-8 18 Q-9 21 -5 20 L3 19 Q6 18 6 14 L5 4 Z"/>
+    <rect x="-18" y="-5.2" width="36" height="10.4" rx="5.2" fill="#fff3dc"/>
+    <circle cx="16.5" cy="0" r="2.6" fill="#4fc3b8"/>
+    <ellipse cx="4" cy="0" rx="4" ry="2.6" fill="#9be7f4"/>
+    <rect x="19.5" y="-6" width="1.6" height="12" rx=".8" fill="#3a6178" stroke="none"/>
+  </g>
+</defs></svg>
 
 <div class="cards">
   <!-- Loaders -->
@@ -104,8 +116,9 @@
     <div class="demo"><div class="scene"><div class="strip"></div><svg class="plane tol-off" viewBox="0 0 24 24"><use href="#i-plane"/></svg></div></div></section>
   <section class="card" data-cat="loaders"><h2>Landing · cockpit view</h2>
     <div class="demo"><div class="land" role="status" aria-label="Landing"><div class="land-roll"><div class="land-cam"><div class="land-bg"></div><div class="rwy-w"><div class="rwy"></div></div></div></div><div class="hud"></div><div class="papi"><i></i><i></i><i></i><i></i></div><div class="land-fade"></div></div></div></section>
-  <section class="card" data-cat="loaders"><h2>Around the Earth</h2>
-    <div class="demo"><div class="earth3d" role="status" aria-label="Loading"><div class="tilt"><span class="ring"></span><div class="earth"></div><span class="ring front"></span><div class="orb-x"><div class="orb-y"><div class="orb-d"><div class="orb-h"><i class="ct"></i><svg class="plane" viewBox="0 0 24 24"><use href="#i-plane"/></svg></div></div></div></div></div></div></div></section>
+  <section class="card" data-cat="loaders lab"><h2>Around the Earth · SVG + CSS</h2>
+    <div class="demo"><div class="earth3d" role="status" aria-label="Loading"><div class="tilt"><span class="ring"></span><svg class="earth" viewBox="0 0 180 180" aria-hidden="true"><defs><clipPath id="earth-clip"><circle cx="90" cy="90" r="88"/></clipPath><radialGradient id="earth-light" cx="30%" cy="25%" r="78%"><stop offset="0" stop-color="#ffffff" stop-opacity=".22"/><stop offset=".45" stop-color="#ffffff" stop-opacity="0"/><stop offset="1" stop-color="#061d38" stop-opacity=".68"/></radialGradient><linearGradient id="earth-ocean" x2="0" y2="1"><stop stop-color="#4c9bd1"/><stop offset="1" stop-color="#17609b"/></linearGradient></defs><circle cx="90" cy="90" r="88" fill="url(#earth-ocean)"/><g clip-path="url(#earth-clip)"><g class="world-map"><path d="M-20 43l13-8 8 1 7-8 13-3 6 4 14-2 8 8-3 8-9 1-3 8-9 1-5 11-8 5-2 13-8 7-5 17-8-2-4-11-10-4-4-13-10-5-4-15 9-4 1-9 10-3 1-10z"/><path d="M42 88l10 2 7 9-3 11 6 10-3 17-8 16-5 19-8 8-5-13-7-10 1-13-7-11 4-15-4-12 8-9z"/><path d="M82 43l8-6 8 2 4 8-6 6-8-2-7 4-6-5z"/><path d="M91 56l13-4 12 5 4 10-8 8-2 12-8 10-4 20-8 13-7-5-3-13-9-8-3-12 7-8-2-10 8-7z"/><path d="M104 42l11-8 18-2 10 5 18-1 14 8 15-4 14 8-3 10-15 3-8 9-12-2-9 8-13-4-9 6-10-8-11 2-6-9-10-3-1-9-8-4z"/><path d="M145 113l12-5 13 4 5 9-10 8-13-1-8-6z"/><path d="M184 137l9 2 7 8-5 7-10-3-5-7z"/><path class="map-repeat" transform="translate(-180 0)" d="M340 43l13-8 8 1 7-8 13-3 6 4 14-2 8 8-3 8-9 1-3 8-9 1-5 11-8 5-2 13-8 7-5 17-8-2-4-11-10-4-4-13-10-5-4-15 9-4 1-9 10-3 1-10z M402 88l10 2 7 9-3 11 6 10-3 17-8 16-5 19-8 8-5-13-7-10 1-13-7-11 4-15-4-12 8-9z M442 43l8-6 8 2 4 8-6 6-8-2-7 4-6-5z M451 56l13-4 12 5 4 10-8 8-2 12-8 10-4 20-8 13-7-5-3-13-9-8-3-12 7-8-2-10 8-7z M464 42l11-8 18-2 10 5 18-1 14 8 15-4 14 8-3 10-15 3-8 9-12-2-9 8-13-4-9 6-10-8-11 2-6-9-10-3-1-9-8-4z M505 113l12-5 13 4 5 9-10 8-13-1-8-6z M544 137l9 2 7 8-5 7-10-3-5-7z"/>
+    </g><path class="latitude" d="M2 90h176M7 59h166M7 121h166"/><g class="cloud-bands"><ellipse cx="45" cy="53" rx="28" ry="4"/><ellipse cx="117" cy="82" rx="33" ry="5"/><ellipse cx="69" cy="125" rx="25" ry="4"/></g><circle cx="90" cy="90" r="88" fill="url(#earth-light)"/></g><circle cx="90" cy="90" r="87" fill="none" stroke="#c5e9ff" stroke-opacity=".7" stroke-width="1.5"/></svg><span class="ring front"></span><svg class="earth-flight" viewBox="0 0 240 170" aria-hidden="true"><path class="orbit-front" d="M220 85 C220 118 20 118 20 85"/><g><animateMotion dur="7s" repeatCount="indefinite" rotate="auto" path="M20 85 C20 52 220 52 220 85 C220 118 20 118 20 85"/><animate attributeName="opacity" dur="7s" repeatCount="indefinite" values="0;0;1;1;0" keyTimes="0;.48;.52;.98;1"/><use href="#toy-plane" transform="scale(.72)"/></g></svg></div></div></div></section>
   <section class="card" data-cat="flight"><h2>Route arc</h2>
     <div class="demo"><div class="arc"><svg viewBox="0 0 200 80"><path class="arc-line" d="M10 65 Q100 -20 190 65"/><circle cx="10" cy="65" r="4"/><circle cx="190" cy="65" r="4"/></svg><svg class="plane arc-plane" viewBox="0 0 24 24"><use href="#i-plane"/></svg></div></div></section>
   <section class="card" data-cat="flight"><h2>Artificial horizon</h2>
@@ -149,6 +162,26 @@
   <section class="card" data-cat="ux"><h2>Unit switch</h2>
     <div class="demo col"><div class="seg" id="seg"><span class="thumb"></span><button class="on" data-u="kt">kt</button><button data-u="kmh">km/h</button></div><p class="t-count" id="seg-out">122 kt</p></div></section>
 
+  <!-- Earth animation approaches -->
+  <section class="card" data-cat="lab"><h2>GSAP · SVG MotionPath</h2>
+    <p class="tech-note">Timeline + tangent-aligned plane motion</p>
+    <div class="demo"><div class="gsap-stage"><svg viewBox="0 0 260 170" role="img" aria-label="Plane orbiting an illustrated Earth"><defs><radialGradient id="gsap-ocean" cx="34%" cy="28%"><stop stop-color="#79bde7"/><stop offset="1" stop-color="#174d7a"/></radialGradient><clipPath id="gsap-clip"><circle cx="130" cy="85" r="59"/></clipPath></defs><ellipse class="gsap-orbit" cx="130" cy="85" rx="111" ry="39"/><circle cx="130" cy="85" r="59" fill="url(#gsap-ocean)"/><g clip-path="url(#gsap-clip)"><path class="gsap-land" d="M47 69l17-15 20 2 12-12 22 5 11-8 18 8 20-2 18 14-8 13-17 4-7 15-15 2-9 17-15 8-8 20-13-9-2-20-12-8-8-22-17-3z M117 106l14 3 10 13-3 19-9 19-7 17-9-8-5-18-8-11 3-18z M168 103l13-7 14 5 8 12-10 8-17-3z"/></g><circle cx="130" cy="85" r="59" fill="none" stroke="rgba(220,243,255,.75)"/><path id="gsap-route" d="M19 85a111 39 0 1 0 222 0a111 39 0 1 0-222 0" fill="none"/><g id="gsap-plane"><use href="#toy-plane" transform="scale(.85)"/></g></svg></div></div></section>
+  <section class="card" data-cat="lab"><h2>Three.js · Cartoon Earth</h2>
+    <p class="tech-note">Toon shading, ink outline, real depth: the plane flies behind the planet</p>
+    <div class="demo gl-wrap"><div class="gl-stage sky-day" id="gl-earth" role="img" aria-label="Cartoon Earth with a small plane orbiting it">Loading 3D scene…</div><p class="gl-caption" id="gl-earth-caption" aria-live="polite">Planning a smooth route</p></div></section>
+  <section class="card" data-cat="lab"><h2>Three.js · Cloud hop</h2>
+    <p class="tech-note">Parallax clouds, speed streaks and a propeller</p>
+    <div class="demo gl-wrap"><div class="gl-stage sky-day" id="gl-clouds" role="img" aria-label="Toy plane flying past soft clouds">Loading 3D scene…</div><p class="gl-caption">Soft clouds, smooth flying</p></div></section>
+  <section class="card" data-cat="lab"><h2>Three.js · Floating island</h2>
+    <p class="tech-note">Low-poly island, drifting clouds, firefly sparkles</p>
+    <div class="demo gl-wrap"><div class="gl-stage sky-dawn" id="gl-island" role="img" aria-label="Small floating island with trees and a house">Loading 3D scene…</div><p class="gl-caption">A calm place to wait</p></div></section>
+  <section class="card" data-cat="lab"><h2>Three.js · Hot-air balloons</h2>
+    <p class="tech-note">Procedural stripes, gentle sway, sea of clouds</p>
+    <div class="demo gl-wrap"><div class="gl-stage sky-mint" id="gl-balloons" role="img" aria-label="Three hot-air balloons above the clouds">Loading 3D scene…</div><p class="gl-caption">Drifting along, no rush</p></div></section>
+  <section class="card" data-cat="lab"><h2>Three.js · Paper plane doodle</h2>
+    <p class="tech-note">Folded geometry and an instanced rainbow trail</p>
+    <div class="demo gl-wrap"><div class="gl-stage sky-dusk" id="gl-paper" role="img" aria-label="Paper plane drawing a figure eight with a rainbow trail">Loading 3D scene…</div><p class="gl-caption">Doodling a route for you</p></div></section>
+
   <!-- Data grid & forms -->
   <section class="card" data-cat="grid"><h2>Form · required &amp; price markers</h2>
     <p class="fm-legend"><span><i class="req">*</i> Required</span><span><i class="px">$</i> Affects final price</span><span><i class="px pp">÷</i> Affects price per passenger</span></p>
@@ -177,6 +210,9 @@
 {% block scripts %}<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/ag-grid-community@32.3.3/styles/ag-grid.css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/ag-grid-community@32.3.3/styles/ag-theme-quartz.css">
 <script src="https://cdn.jsdelivr.net/npm/ag-grid-community@32.3.3/dist/ag-grid-community.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/MotionPathPlugin.min.js"></script>
+<script type="module" src="{{ url_for('static', filename='js/gl-scenes.js') }}"></script>
 <script>
 document.getElementById('demo-overlay').addEventListener('click', () => {
   const o = Loader.overlay(); setTimeout(() => o.remove(), 2000);
@@ -185,7 +221,7 @@ document.getElementById('demo-overlay').addEventListener('click', () => {
 document.querySelectorAll('.chip').forEach(chip => chip.addEventListener('click', () => {
   document.querySelectorAll('.chip').forEach(c => c.classList.toggle('active', c === chip));
   document.querySelectorAll('.cards .card').forEach(card => {
-    card.hidden = chip.dataset.cat !== 'all' && card.dataset.cat !== chip.dataset.cat;
+    card.hidden = chip.dataset.cat !== 'all' && !card.dataset.cat.split(' ').includes(chip.dataset.cat);
   });
 }));
 
@@ -211,6 +247,18 @@ enter.classList.add('enter');
 })();
 
 const $ = id => document.getElementById(id);
+
+if (window.gsap && window.MotionPathPlugin) {
+  gsap.registerPlugin(MotionPathPlugin);
+  gsap.to('#gsap-plane', {
+    duration: 7,
+    repeat: -1,
+    ease: 'none',
+    motionPath: { path: '#gsap-route', align: '#gsap-route', alignOrigin: [0.5, 0.5], autoRotate: true },
+  });
+} else {
+  document.querySelector('.gsap-stage').classList.add('unavailable');
+}
 
 $('cockpit-toggle').addEventListener('click', e => {
   const on = document.body.classList.toggle('cockpit');
