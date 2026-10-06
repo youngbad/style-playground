@@ -17,6 +17,26 @@ h1 { margin: 0 0 4px; font-size: 24px; } h2 { margin: 0 0 14px; font-size: 13px;
 .cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px; }
 @media (max-width: 760px) { .grid { grid-template-columns: 1fr; } }
 .card { background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); box-shadow: var(--shadow); padding: 20px; }
+.logo-preview { min-height: 118px; display: grid; place-items: center; padding: 14px; background: #f7fafc; border: 1px solid var(--line); border-radius: 6px; }
+.logo-lockup { display: inline-flex; align-items: center; gap: 12px; color: var(--ink); text-decoration: none; }
+.logo-mark { flex: 0 0 auto; width: 56px; height: 56px; }
+.logo-type { display: grid; gap: 4px; line-height: 1; }
+.logo-type strong { color: #1f3448; font-size: 18px; font-weight: 700; }
+.logo-type small { color: #6b8295; font-size: 9px; font-weight: 700; letter-spacing: .12em; }
+.logo-route .logo-type strong { color: #1f4e79; }
+.logo-wing .logo-mark { width: 62px; }
+.logo-field .logo-type strong { color: #244b68; }
+.logo-note { min-height: 40px; margin: 14px 0; color: var(--muted); font-size: 13px; }
+.logo-apply { width: 100%; }
+.logo-selected { border-color: var(--brand-2); box-shadow: 0 0 0 2px rgba(47,127,193,.16), var(--shadow); }
+.brand.header-logo-preview { gap: 0; }
+.header-logo-preview .logo-lockup { gap: 9px; }
+.header-logo-preview .logo-mark { width: 36px; height: 36px; }
+.header-logo-preview .logo-type { gap: 3px; }
+.header-logo-preview .logo-type strong { color: #fff; font-size: 14px; }
+.header-logo-preview .logo-type small { color: #cfe0f1; font-size: 7px; letter-spacing: .11em; }
+.header-logo-preview .logo-wing .logo-mark { width: 40px; }
+body.cockpit .logo-preview { background: #f7fafc; }
 label { display: block; font-size: 13px; font-weight: 600; margin-bottom: 14px; }
 label.check { display: flex; align-items: center; gap: 8px; font-weight: 500; }
 select, input[type=number] { display: block; width: 100%; margin-top: 4px; padding: 8px 10px; font: inherit; border: 1px solid var(--line); border-radius: 6px; background: #fff; color: var(--ink); }
@@ -337,4 +357,9 @@ input[type=range] { width: 200px; accent-color: var(--brand); }
 .sky-dusk { background: linear-gradient(#c6b8f0, #ffd5e5 75%, #ffeccf); }
 .gl-caption { margin: 0; min-height: 16px; color: var(--muted); font-size: 11px; letter-spacing: .02em; transition: opacity .3s; }
 .gl-caption.swap { opacity: 0; }
+.sky-biz { background: linear-gradient(160deg, #f7fafc, #e3ebf3); box-shadow: inset 0 0 0 1px var(--line); }
+body.cockpit .sky-biz { background: linear-gradient(160deg, #22313f, #16212b); }
+.lg { display: inline-block; width: 8px; height: 8px; margin: 0 4px 0 10px; border-radius: 2px; vertical-align: 0; }
+.lg:first-child { margin-left: 0; }
+.lg1 { background: #1f4e79; } .lg2 { background: #4f9bd1; } .lg3 { background: #e0a030; }
 

@@ -18,6 +18,9 @@
   <button class="chip" data-cat="ux">UX add-ins</button>
   <button class="chip" data-cat="grid">Data grid &amp; forms</button>
   <button class="chip" data-cat="lab">3D lab</button>
+  <button class="chip" data-cat="labbiz">3D · business</button>
+  <button class="chip" data-cat="brand">Brand ideas</button>
+  <button class="chip" id="logo-reset" hidden>Restore HangarRate</button>
   <button class="chip" id="cockpit-toggle" aria-pressed="false">Cockpit theme</button>
 </div>
 
@@ -33,6 +36,41 @@
 </defs></svg>
 
 <div class="cards">
+  <!-- Pricing Tool · General Aviation logo directions -->
+  <section class="card logo-card" data-cat="brand" data-logo="route">
+    <h2>01 · Route signature</h2>
+    <div class="logo-preview">
+      <div class="logo-lockup logo-route" aria-label="Pricing Tool, General Aviation, Route signature">
+        <svg class="logo-mark" viewBox="0 0 56 56" aria-hidden="true"><circle cx="28" cy="28" r="24" fill="none" stroke="#1f4e79" stroke-width="2"/><path d="M11 35C18 35 17 19 27 19s8 16 18 16" fill="none" stroke="#2f7fc1" stroke-width="2" stroke-linecap="round" stroke-dasharray="2 4"/><circle cx="12" cy="35" r="3" fill="#1f4e79"/><circle cx="45" cy="35" r="3" fill="#1f4e79"/><g transform="translate(28 19) rotate(-90) scale(.52)"><use href="#toy-plane"/></g></svg>
+        <span class="logo-type"><strong>Pricing Tool</strong><small>GENERAL AVIATION</small></span>
+      </div>
+    </div>
+    <p class="logo-note">A route arc and waypoints make the aviation use case immediate.</p>
+    <button class="btn secondary logo-apply" data-logo-preview>Preview in header</button>
+  </section>
+  <section class="card logo-card" data-cat="brand" data-logo="wing">
+    <h2>02 · Wingline</h2>
+    <div class="logo-preview">
+      <div class="logo-lockup logo-wing" aria-label="Pricing Tool, General Aviation, Wingline">
+        <svg class="logo-mark" viewBox="0 0 56 56" aria-hidden="true"><path d="M5 28 25 22 44 10 39 25 51 28 39 31 44 46 25 34Z" fill="#1f4e79"/><path d="M13 28 28 28" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"/><path d="M25 22 39 25M25 34 39 31" fill="none" stroke="#8fc0e0" stroke-width="2" stroke-linecap="round"/><circle cx="28" cy="28" r="2" fill="#e0a030"/></svg>
+        <span class="logo-type"><strong>Pricing Tool</strong><small>GENERAL AVIATION</small></span>
+      </div>
+    </div>
+    <p class="logo-note">A compact wing mark: directional, readable at small sizes, easy to embroider.</p>
+    <button class="btn secondary logo-apply" data-logo-preview>Preview in header</button>
+  </section>
+  <section class="card logo-card" data-cat="brand" data-logo="field">
+    <h2>03 · Flight badge</h2>
+    <div class="logo-preview">
+      <div class="logo-lockup logo-field" aria-label="Pricing Tool, General Aviation, Flight badge">
+        <svg class="logo-mark" viewBox="0 0 56 56" aria-hidden="true"><path d="M28 3 48 10v15c0 13-8 22-20 28C16 47 8 38 8 25V10Z" fill="#e8f1f7" stroke="#1f4e79" stroke-width="2.4" stroke-linejoin="round"/><path d="M14 26h28M28 8v36" fill="none" stroke="#9db5c9" stroke-width="1.2"/><g transform="translate(28 24) rotate(-90) scale(.52)"><use href="#toy-plane"/></g><circle cx="28" cy="39" r="3.3" fill="#e0a030"/></svg>
+        <span class="logo-type"><strong>Pricing Tool</strong><small>GENERAL AVIATION</small></span>
+      </div>
+    </div>
+    <p class="logo-note">A shield-shaped aviation badge, with a quiet signal of trust and protection.</p>
+    <button class="btn secondary logo-apply" data-logo-preview>Preview in header</button>
+  </section>
+
   <!-- Loaders -->
   <section class="card" data-cat="loaders"><h2>Globe orbit</h2><div class="demo">{% include "_globe.html" %}</div></section>
   <section class="card" data-cat="loaders"><h2>Globe orbit · small</h2><div class="demo">{% with cls="small" %}{% include "_globe.html" %}{% endwith %}</div></section>
@@ -182,6 +220,29 @@
     <p class="tech-note">Folded geometry and an instanced rainbow trail</p>
     <div class="demo gl-wrap"><div class="gl-stage sky-dusk" id="gl-paper" role="img" aria-label="Paper plane drawing a figure eight with a rainbow trail">Loading 3D scene…</div><p class="gl-caption">Doodling a route for you</p></div></section>
 
+  <section class="card" data-cat="lab labbiz"><h2>Three.js · Route network</h2>
+    <p class="tech-note">Dotted globe, live airports from /api/catalog, quiet route pulses</p>
+    <div class="demo gl-wrap"><div class="gl-stage sky-biz" id="gl-network" role="img" aria-label="Dotted globe with airline routes between US airports">Loading 3D scene…</div><p class="gl-caption">Routes currently in the catalog</p></div></section>
+  <section class="card" data-cat="lab labbiz"><h2>Three.js · Coverage shield</h2>
+    <p class="tech-note">Glossy PBR shield, moving light, orbiting status markers</p>
+    <div class="demo gl-wrap"><div class="gl-stage sky-biz" id="gl-shield" role="img" aria-label="Blue shield with a check mark">Loading 3D scene…</div><p class="gl-caption">Verifying your coverage</p></div></section>
+  <section class="card" data-cat="lab labbiz"><h2>Three.js · Premium breakdown</h2>
+    <p class="tech-note">Stacked columns that morph between two quotes</p>
+    <div class="demo gl-wrap"><div class="gl-stage sky-biz" id="gl-premium" role="img" aria-label="Stacked columns showing rental, fuel and fees for four routes">Loading 3D scene…</div><p class="gl-caption"><i class="lg lg1"></i>Rental<i class="lg lg2"></i>Fuel<i class="lg lg3"></i>Fees</p></div></section>
+
+  <section class="card" data-cat="loaders lab labbiz"><h2>Plane loader · Orbit</h2>
+    <p class="tech-note">Airliner circling a dotted globe, contrail fades behind it</p>
+    <div class="demo gl-wrap"><div class="gl-stage sky-biz" id="gl-orbit" role="status" aria-label="Loading: airplane orbiting the Earth">Loading 3D scene…</div><p class="gl-caption">Preparing your quote</p></div></section>
+  <section class="card" data-cat="loaders lab labbiz"><h2>Plane loader · Progress arc</h2>
+    <p class="tech-note">Indeterminate arc that grows and shrinks behind the plane</p>
+    <div class="demo gl-wrap"><div class="gl-stage sky-biz" id="gl-arc" role="status" aria-label="Loading: airplane flying around a globe">Loading 3D scene…</div><p class="gl-caption">Checking availability</p></div></section>
+  <section class="card" data-cat="loaders lab labbiz"><h2>Plane loader · Radar</h2>
+    <p class="tech-note">Instrument dial, sweeping beam and a banking aircraft</p>
+    <div class="demo gl-wrap"><div class="gl-stage sky-biz" id="gl-radar" role="status" aria-label="Loading: airplane circling a radar dial">Loading 3D scene…</div><p class="gl-caption">Scanning routes</p></div></section>
+  <section class="card" data-cat="loaders lab labbiz"><h2>Plane loader · Holding pattern</h2>
+    <p class="tech-note">Right-hand racetrack over a map grid with pulsing fixes</p>
+    <div class="demo gl-wrap"><div class="gl-stage sky-biz" id="gl-holding" role="status" aria-label="Loading: airplane in a holding pattern">Loading 3D scene…</div><p class="gl-caption">In a holding pattern, one moment</p></div></section>
+
   <!-- Data grid & forms -->
   <section class="card" data-cat="grid"><h2>Form · required &amp; price markers</h2>
     <p class="fm-legend"><span><i class="req">*</i> Required</span><span><i class="px">$</i> Affects final price</span><span><i class="px pp">÷</i> Affects price per passenger</span></p>
@@ -218,8 +279,8 @@ document.getElementById('demo-overlay').addEventListener('click', () => {
   const o = Loader.overlay(); setTimeout(() => o.remove(), 2000);
 });
 
-document.querySelectorAll('.chip').forEach(chip => chip.addEventListener('click', () => {
-  document.querySelectorAll('.chip').forEach(c => c.classList.toggle('active', c === chip));
+document.querySelectorAll('.chip[data-cat]').forEach(chip => chip.addEventListener('click', () => {
+  document.querySelectorAll('.chip[data-cat]').forEach(c => c.classList.toggle('active', c === chip));
   document.querySelectorAll('.cards .card').forEach(card => {
     card.hidden = chip.dataset.cat !== 'all' && !card.dataset.cat.split(' ').includes(chip.dataset.cat);
   });
@@ -247,6 +308,29 @@ enter.classList.add('enter');
 })();
 
 const $ = id => document.getElementById(id);
+
+const brandHome = $('brand-home');
+const defaultBrand = brandHome.innerHTML;
+const logoReset = $('logo-reset');
+
+document.querySelectorAll('[data-logo-preview]').forEach(button => button.addEventListener('click', () => {
+  const card = button.closest('.logo-card');
+  const lockup = card.querySelector('.logo-lockup').cloneNode(true);
+  lockup.classList.add('header-lockup');
+  brandHome.replaceChildren(lockup);
+  brandHome.classList.add('header-logo-preview');
+  document.querySelectorAll('.logo-card').forEach(item => item.classList.toggle('logo-selected', item === card));
+  document.querySelectorAll('[data-logo-preview]').forEach(item => item.textContent = item === button ? 'Previewing in header' : 'Preview in header');
+  logoReset.hidden = false;
+}));
+
+logoReset.addEventListener('click', () => {
+  brandHome.innerHTML = defaultBrand;
+  brandHome.classList.remove('header-logo-preview');
+  document.querySelectorAll('.logo-card').forEach(card => card.classList.remove('logo-selected'));
+  document.querySelectorAll('[data-logo-preview]').forEach(button => button.textContent = 'Preview in header');
+  logoReset.hidden = true;
+});
 
 if (window.gsap && window.MotionPathPlugin) {
   gsap.registerPlugin(MotionPathPlugin);
